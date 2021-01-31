@@ -1,3 +1,12 @@
+<%= current_user ? "Welcome #{current_user.name}" : 'You need to sign in'%>
+<br><br>
+<% if current_user %>
+  <%= link_to('Sign out', new_story_path(current_user), method: :delete) %>
+<% else %>
+  <%= link_to('Sign in', new_sessions_path) %>
+<% end %>
+<p id="notice"><%= notice %></p>
+
 <h1>New Story</h1>
 
 <%= render 'form', story: @story %>

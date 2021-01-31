@@ -1,37 +1,23 @@
-<%= current_user ? 'Bienvenido #{current_user.name}' : 'Para crear contenido debes iniciar sesion'%>
-<br>
-<% if current_user%>
-  <%= link_to('Sign out', session_path(current_user), method: delete) %>
+<%= current_user ? "Welcome #{current_user.name}" : 'You need to sign in'%>
+<br><br>
+<% if current_user %>
+  <%= link_to('Sign out', sessions_path(current_user), method: :delete) %>
 <% else %>
-  <%= link_to ('Sign in', new_session_path) %>
+  <%= link_to('Sign in', new_sessions_path) %>
 <% end %>
 <p id="notice"><%= notice %></p>
 
 <h1>Stories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Picture</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @stories.each do |story| %>
-      <tr>
-        <td><%= story.title %></td>
-        <td><%= story.picture %></td>
-        <td><%= story.content %></td>
-        <td><%= link_to 'Show', story %></td>
-        <td><%= link_to 'Edit', edit_story_path(story) %></td>
-        <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @stories.each do |story| %>
+    <h4>Title</h4><%= story.title %>
+    <h4>Picture</h4><%= story.picture %>
+    <h4>Content</h4><%= story.content %>
+    <h4>Author</h4><%= story.user_id %>
+    <br>
+    <%= link_to 'Show', story %>
+    <%= link_to 'Edit', edit_story_path(story) %>
+    <%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 
 <br>
 

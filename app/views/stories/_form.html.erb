@@ -26,6 +26,11 @@
     <%= form.text_area :content %>
   </div>
 
+  <div class="field">
+    <%= form.label :author %>
+    <%= current_user.name %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
