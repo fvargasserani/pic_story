@@ -1,6 +1,10 @@
-<h1>Editing Story</h1>
+<% if current_user.id == @story.user_id %>
+    <h1>Editing Story</h1>
 
-<%= render 'form', story: @story %>
+    <%= render 'form', story: @story %>
 
-<%= link_to 'Show', @story %> |
-<%= link_to 'Back', stories_path %>
+    <%= link_to 'Show', @story %> |
+    <%= link_to 'Back', stories_path %>
+<% else %>
+    <p>Seems like you are not the author of this story. You cannot edit.</p><br> 
+<% end %>

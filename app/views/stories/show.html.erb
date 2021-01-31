@@ -16,6 +16,11 @@
     <%= story.content %>
   </p>
 
+  <p>
+    <strong>Author:</strong>
+    <%= story.user.name %>
+  </p>
+
   <%= link_to 'Edit', edit_story_path(@story) %> |
   <%= link_to 'Back', stories_path %>
   <br><br>

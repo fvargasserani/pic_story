@@ -3,12 +3,12 @@ class StoriesController < ApplicationController
 
   # GET /stories or /stories.json
   def index
-    @stories = Story.all
+    @stories = Story.all.order(created_at: :desc)
   end
 
   # GET /stories/1 or /stories/1.json
   def show
-    @stories = Story.all
+    @stories = Story.all.order(created_at: :desc)
   end
 
   # GET /stories/new
@@ -18,6 +18,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
+    @user = User.where(user_id: params[:id])
   end
 
   # POST /stories or /stories.json
