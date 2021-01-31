@@ -8,11 +8,12 @@ class StoriesController < ApplicationController
 
   # GET /stories/1 or /stories/1.json
   def show
+    @stories = Story.all
   end
 
   # GET /stories/new
   def new
-    @story = Story.new
+    @story = current_user.stories.build
   end
 
   # GET /stories/1/edit
@@ -21,11 +22,11 @@ class StoriesController < ApplicationController
 
   # POST /stories or /stories.json
   def create
-    @story = Story.new(story_params)
+    @story = current_user.stories.build(story_params)
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to @story, notice: "Story was successfully created." }
+        format.html { redirect_to @story }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new, status: :unprocessable_entity }

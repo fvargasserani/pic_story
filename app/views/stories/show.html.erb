@@ -1,19 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @story.title %>
-</p>
+<% current_user.stories.each do |story| %>
+  <p>
+    <strong>Title:</strong>
+    <%= story.title %>
+  </p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @story.picture %>
-</p>
+  <p>
+    <strong>Picture:</strong><br>
+    <img width="400px"<%= image_tag story.picture %>
+  </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @story.content %>
-</p>
+  <p>
+    <strong>Content:</strong>
+    <%= story.content %>
+  </p>
 
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
+  <%= link_to 'Edit', edit_story_path(@story) %> |
+  <%= link_to 'Back', stories_path %>
+  <br><br>
+<% end %>

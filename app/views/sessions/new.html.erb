@@ -10,5 +10,7 @@
         <%= label_tag :password %>
         <%= password_field_tag :password, params[:password], placeholder: "Enter your password", required: true %>
     </div>
-<%= submit_tag 'Sign in' %>
+<%= submit_tag 'Sign in' %><br><br>
+<p>Are you a new user?</p>
+<%= link_to('Register now', new_user_path) %>
 <% end %>

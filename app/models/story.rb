@@ -1,4 +1,4 @@
 class Story < ApplicationRecord
-    belongs_to :user, :foreign_key => 'name'
+    belongs_to :user
     validates :title, :picture, :content, presence: true
 end
